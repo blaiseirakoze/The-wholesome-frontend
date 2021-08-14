@@ -46,3 +46,7 @@ body {
   height: 2rem;
   cursor: pointer;
 }
+
+.footer-link {
+  margin-top: 1rem;
+}
