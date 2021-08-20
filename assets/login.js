@@ -1,5 +1,6 @@
 let loginBtn = document.querySelector("#login-btn");
 
+// login event
 loginBtn.addEventListener("click", async function (e) {
   e.preventDefault();
   try {
@@ -13,7 +14,7 @@ loginBtn.addEventListener("click", async function (e) {
         type: "login",
       };
 
-      const response = await fetch("http://localhost:8080/the-wholesome/user", {
+      const response = await fetch("http://localhost:8080/The-wholesome-backend/user", {
         method: "POST",
         cache: "no-cache",
         credentials: "same-origin",
@@ -25,7 +26,9 @@ loginBtn.addEventListener("click", async function (e) {
         body: JSON.stringify(data),
       });
       const res = await response.json();
-      if (res.userLoggedIn) {
+      if (res.message === "success") {
+        localStorage.setItem('names', res.names);
+        localStorage.setItem("role", res.role);
         window.location.replace("http://127.0.0.1:5500/welcome.html");
       } else {
         alert("Invalid credentials");
@@ -36,10 +39,11 @@ loginBtn.addEventListener("click", async function (e) {
   }
 });
 
+// login validations
 function ValidationLogin() {
   let username = document.querySelector("#username").value;
   let password = document.querySelector("#password").value;
-  // Conditions
+
   if (username != "" && password != "") {
     return true;
   } else {

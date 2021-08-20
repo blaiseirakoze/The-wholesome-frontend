@@ -1,5 +1,6 @@
 let btn = document.querySelector("#btn");
 
+// register event
 btn.addEventListener("click", async function (e) {
   e.preventDefault();
   try {
@@ -25,7 +26,7 @@ btn.addEventListener("click", async function (e) {
         type: "register",
       };
 
-      const response = await fetch("http://localhost:8080/the-wholesome/user", {
+      const response = await fetch("http://localhost:8080/The-wholesome-backend/user", {
         method: "POST",
         cache: "no-cache",
         credentials: "same-origin",
@@ -39,8 +40,8 @@ btn.addEventListener("click", async function (e) {
       const res = await response.json();
       if (res.message == "user created successful") {
         window.location.replace("http://127.0.0.1:5500/login.html");
-      } else if (res.message == "user already exist") {
-        alert("user already exist");
+      } else {
+        alert(res.message);
       }
     }
   } catch (error) {
@@ -48,6 +49,7 @@ btn.addEventListener("click", async function (e) {
   }
 });
 
+// register validations
 function ValidationRegister() {
   let username = document.querySelector("#username").value;
   let password = document.querySelector("#password").value;
@@ -57,7 +59,7 @@ function ValidationRegister() {
   let sex = document.querySelector("#sex").value;
   let phoneNumber = document.querySelector("#phoneNumber").value;
   let role = document.querySelector("#role").value;
-  // Conditions
+ 
   if (
     username != "" &&
     password != "" &&
@@ -68,22 +70,12 @@ function ValidationRegister() {
     phoneNumber != "" &&
     role != ""
   ) {
-    if (
-      (role == "admin" && password.length >= 10) ||
-      (role == "guest" && password.length >= 5)
-    ) {
       if (phoneNumber.length == 10) {
         return true;
       } else {
         alert("The phoneNumber No. must be at least 10 digit long!");
         return false;
       }
-    } else {
-      alert(
-        "The password length should be 5 and for the admin the length should be 10"
-      );
-      return false;
-    }
   } else {
     alert("All fields are required.....!");
     return false;

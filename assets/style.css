@@ -7,6 +7,7 @@ body {
   margin: 0 auto;
   margin-top: 2rem;
   padding: 0.5rem;
+  text-align: center;
 }
 
 .form-group {
@@ -22,11 +23,6 @@ body {
   width: 30%;
   padding: 2rem 0;
   border-top: 5px solid yellow;
-}
-
-.title {
-  text-align: center;
-  font-size: 30px;
 }
 
 .form-input {
@@ -50,3 +46,42 @@ body {
 .footer-link {
   margin-top: 1rem;
 }
+
+.profile {
+   text-align: center;
+ }
+
+.profile-photo {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.photo {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.profile-title {
+  font-size: 30px;
+  margin-bottom: 1rem;
+}
+
+.profile-title-2 {
+  font-size: 20px;
+  margin-bottom: 1rem;
+}
+
+.profile-description {
+  text-align: center;
+  font-size: 15px;
+  margin: 1rem 3rem;
+}
+
+.profile-logout-button{
+  cursor: pointer;
+  background-color: yellow;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  border-radius: 40px;
+ }
